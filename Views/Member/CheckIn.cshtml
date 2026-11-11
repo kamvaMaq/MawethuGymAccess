@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Gym Access Check-In";
+}
+
+<div class="container py-5" style="background-color: #0E0F11; color: #FFFFFF; min-height: 100vh;">
+    <div class="row justify-content-center">
+        <div class="col-md-6 p-4 rounded text-center" style="background-color: #1E2124; border: 1px solid #2F3338;">
+            <h2 class="mb-3" style="color: #D4E84A;">Biometric Access Terminal</h2>
+            <p class="text-muted small">Position face in front of the scanner or enter credentials manually.</p>
+
+            @if (ViewBag.Success != null)
+            {
+                <div class="alert alert-success bg-success text-dark fw-bold" role="alert">
+                    @ViewBag.Success
+                </div>
+            }
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger bg-danger text-white fw-bold" role="alert">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <!-- Simulated Camera Feed Box -->
+            <div class="p-5 mb-4 rounded border border-secondary d-flex flex-column align-items-center justify-content-center" style="background-color: #0E0F11; height: 180px;">
+                <div class="spinner-grow text-warning mb-2" role="status" style="width: 3rem; height: 3rem;"></div>
+                <span class="text-muted small">Scanning Biometric Vector...</span>
+            </div>
+
+            <form asp-action="CheckIn" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" name="identifier" class="form-control bg-dark text-white border-secondary" placeholder="Enter Member Number or Phone..." required />
+                    <input type="hidden" name="method" value="Biometric" />
+                    <button class="btn fw-bold" type="submit" style="background-color: #D4E84A; color: #0E0F11;">Verify Access</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

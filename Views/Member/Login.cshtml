@@ -1,0 +1,32 @@
+﻿@model MawethuGym.Web.ViewModels.MemberLoginViewModel
+
+@{
+    ViewData["Title"] = "Member Login";
+}
+
+<div class="container py-5" style="background-color: #0E0F11; color: #FFFFFF; min-height: 100vh;">
+    <div class="row justify-content-center">
+        <div class="col-md-5 p-4 rounded" style="background-color: #1E2124; border: 1px solid #2F3338;">
+            <h2 class="text-center mb-4" style="color: #D4E84A;">Member Login</h2>
+
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success bg-dark text-light border-success mb-3" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+
+            <form asp-action="Login" method="post">
+                <div class="text-danger mb-3" asp-validation-summary="ModelOnly"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Identifier" class="form-label">Email, Phone, or Member Number</label>
+                    <input asp-for="Identifier" class="form-control bg-dark text-white border-secondary" placeholder="e.g. MG-4163" />
+                    <span asp-validation-for="Identifier" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn w-100 fw-bold py-2" style="background-color: #D4E84A; color: #0E0F11;">Access Portal</button>
+            </form>
+        </div>
+    </div>
+</div>
