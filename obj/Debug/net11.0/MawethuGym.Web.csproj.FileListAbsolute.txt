@@ -241,3 +241,6 @@ C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess
 C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess\MawethuGym.Web\obj\Debug\net11.0\MawethuGym.Web.pdb
 C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess\MawethuGym.Web\obj\Debug\net11.0\MawethuGym.Web.genruntimeconfig.cache
 C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess\MawethuGym.Web\obj\Debug\net11.0\ref\MawethuGym.Web.dll
+C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess\MawethuGym.Web\obj\Debug\net11.0\MawethuGym.Web.sourcelink.json
+C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess\MawethuGym.Web\obj\Debug\net11.0\compressed\sxhawic2ic-{0}-n2qhopirm8-n2qhopirm8.gz
+C:\Users\Kamva.Maqinana\OneDrive - UVU Africa\Documents\Project\MawethuGymAccess\MawethuGym.Web\obj\Debug\net11.0\compressed\gu4d8litj3-{0}-u8wu7i4inb-u8wu7i4inb.gz

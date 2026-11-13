@@ -15,14 +15,14 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     // If you encounter a merge conflict in the line below, it means you need to
     // discard one of the migration branches and recreate its migrations on top of
     // the other branch. See https://aka.ms/efcore-docs-migrations-conflicts for more info.
-    public override string LastMigrationId => "20261111094753_InitialCreate";
+    public override string LastMigrationId => "20261113114119_AddMultiRoleAndAuditFields";
 
     protected override void BuildModel(ModelBuilder modelBuilder)
     {
 #pragma warning disable 612, 618
         modelBuilder.HasAnnotation("ProductVersion", "11.0.0");
 
-        modelBuilder.Entity("MawethuGym.Web.Data.CheckIn", b =>
+        modelBuilder.Entity("MawethuGym.Web.Models.CheckIn", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("CheckIns");
             });
 
-        modelBuilder.Entity("MawethuGym.Web.Data.Member", b =>
+        modelBuilder.Entity("MawethuGym.Web.Models.Member", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -57,11 +57,17 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                 b.Property<bool>("BiometricConsentGiven")
                     .HasColumnType("INTEGER");
 
+                b.Property<double>("CurrentWeightKg")
+                    .HasColumnType("REAL");
+
                 b.Property<string>("Email")
                     .IsRequired()
                     .HasColumnType("TEXT");
 
                 b.Property<DateTime>("ExpiryDate")
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("FaceDescriptorJson")
                     .HasColumnType("TEXT");
 
                 b.Property<string>("FullName")
@@ -80,20 +86,114 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                     .IsRequired()
                     .HasColumnType("TEXT");
 
+                b.Property<int?>("RegisteredByStaffId")
+                    .HasColumnType("INTEGER");
+
+                b.Property<double>("WeightGoalKg")
+                    .HasColumnType("REAL");
+
                 b.HasKey("Id");
+
+                b.HasIndex("RegisteredByStaffId");
 
                 b.ToTable("Members");
             });
 
-        modelBuilder.Entity("MawethuGym.Web.Data.CheckIn", b =>
+        modelBuilder.Entity("MawethuGym.Web.Models.Payment", b =>
             {
-                b.HasOne("MawethuGym.Web.Data.Member", "Member")
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("INTEGER");
+
+                b.Property<decimal>("Amount")
+                    .HasColumnType("TEXT");
+
+                b.Property<int>("MemberId")
+                    .HasColumnType("INTEGER");
+
+                b.Property<string>("Method")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<int>("StaffId")
+                    .HasColumnType("INTEGER");
+
+                b.Property<DateTime>("Timestamp")
+                    .HasColumnType("TEXT");
+
+                b.HasKey("Id");
+
+                b.HasIndex("MemberId");
+
+                b.HasIndex("StaffId");
+
+                b.ToTable("Payments");
+            });
+
+        modelBuilder.Entity("MawethuGym.Web.Models.Staff", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("INTEGER");
+
+                b.Property<string>("FullName")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("PasswordHash")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("Role")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("Username")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.HasKey("Id");
+
+                b.ToTable("Staff");
+            });
+
+        modelBuilder.Entity("MawethuGym.Web.Models.CheckIn", b =>
+            {
+                b.HasOne("MawethuGym.Web.Models.Member", "Member")
                     .WithMany()
                     .HasForeignKey("MemberId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
 
                 b.Navigation("Member");
+            });
+
+        modelBuilder.Entity("MawethuGym.Web.Models.Member", b =>
+            {
+                b.HasOne("MawethuGym.Web.Models.Staff", "RegisteredByStaff")
+                    .WithMany()
+                    .HasForeignKey("RegisteredByStaffId");
+
+                b.Navigation("RegisteredByStaff");
+            });
+
+        modelBuilder.Entity("MawethuGym.Web.Models.Payment", b =>
+            {
+                b.HasOne("MawethuGym.Web.Models.Member", "Member")
+                    .WithMany()
+                    .HasForeignKey("MemberId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("MawethuGym.Web.Models.Staff", "Staff")
+                    .WithMany()
+                    .HasForeignKey("StaffId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Member");
+
+                b.Navigation("Staff");
             });
 #pragma warning restore 612, 618
     }

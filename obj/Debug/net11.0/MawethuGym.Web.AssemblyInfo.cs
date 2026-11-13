@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MawethuGym.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+112a3cacdec654d592ce3db1d52ddf5b01d13488")]
 [assembly: System.Reflection.AssemblyProductAttribute("MawethuGym.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MawethuGym.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

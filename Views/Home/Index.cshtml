@@ -1,8 +1,69 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Mawethu Gym Access — Home";
+    Layout = "_LandingLayout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Styles {
+    <link rel="stylesheet" href="~/css/landing.css" />
+}
+
+<div class="py-5">
+    <!-- Header Navigation -->
+    <header class="d-flex justify-content-between align-items-center py-3 mb-5 border-bottom border-secondary">
+        <div class="d-flex align-items-center gap-3">
+            <img src="~/images/logo.jpg" alt="Mawethu Gym Logo" class="rounded-circle border border-secondary" width="48" height="48" style="object-fit: cover;" />
+            <h4 class="mb-0 fw-bold text-white">MAWETHU <span style="color: #D4E84A;">GYM</span></h4>
+        </div>
+        <div class="d-flex gap-3">
+            <a class="btn btn-outline-light btn-sm px-3 py-2" asp-controller="Member" asp-action="Portal">Member Portal</a>
+            <a class="btn btn-lemon btn-sm px-3 py-2" asp-controller="Member" asp-action="StaffLogin">Staff Workspace</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="row align-items-center py-4 mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <span class="badge bg-dark text-warning border border-secondary mb-3 px-3 py-2">
+                <i class="bi bi-shield-check"></i> POPIA-Compliant Biometric Security
+            </span>
+            <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.2;">
+                Next-Generation Gym Access & <span style="color: #D4E84A;">Smart Management</span>
+            </h1>
+            <p class="text-muted lead mb-4">
+                Experience instant facial recognition check-ins, automated attendance tracking, and streamlined member administration built for modern fitness facilities.
+            </p>
+            <div class="d-flex gap-3">
+                <a class="btn btn-lemon px-4 py-3 fw-bold" asp-controller="Member" asp-action="StaffLogin">
+                    <i class="bi bi-speedometer2"></i> Open Staff Terminal
+                </a>
+                <a class="btn btn-dark border border-secondary px-4 py-3 text-white" asp-controller="Member" asp-action="CheckIn">
+                    <i class="bi bi-camera"></i> Live Face Scanner
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <div class="position-relative overflow-hidden rounded-4 border border-secondary shadow-lg">
+                <img src="~/images/gym-athlete.jpg" alt="Gym Athlete Training" class="img-fluid w-100" style="max-height: 420px; object-fit: cover; filter: brightness(0.85);" />
+                <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-start border-top border-secondary">
+                    <small class="text-warning fw-bold">LIVE SYSTEM</small>
+                    <p class="text-white small mb-0">Secure 128-point facial vector scanning operating in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Banner Section -->
+    <section class="mb-5">
+        <div class="card-custom position-relative overflow-hidden p-0 border border-secondary">
+            <img src="~/images/gym-mural.jpg" alt="Gym Interior" class="w-100" style="height: 250px; object-fit: cover; filter: brightness(0.4);" />
+            <div class="position-absolute top-50 start-50 translate-middle text-center w-100 px-3">
+                <h3 class="fw-bold text-white mb-2">Built for high-performance fitness environments</h3>
+                <p class="text-muted small mb-0">Manage 100+ active members with total reliability and POPIA compliance.</p>
+            </div>
+        </div>
+    </section>
 </div>
+
+@section Scripts {
+    <script src="~/js/landing.js"></script>
+}
